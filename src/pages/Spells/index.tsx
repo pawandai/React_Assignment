@@ -2,9 +2,10 @@ import { addSpells } from '@/redux/slice/allSpellsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Footer from '@/components/shared/Footer';
+import Pagination from '@/components/shared/Pagination';
 
-type spellsType = {
+export type spellsType = {
   index: string;
   level: number;
   name: string;
@@ -12,7 +13,6 @@ type spellsType = {
 };
 
 const Spells = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const spells = useSelector(
     (state: { spells: { data: spellsType[] } }) => state.spells.data
@@ -35,19 +35,15 @@ const Spells = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {spells.map((spell) => (
-        <div key={spell.url}>
-          <span
-            onClick={() => {
-              navigate(`/spells/${spell.index}`);
-            }}
-          >
-            {spell.name}
-          </span>
-        </div>
-      ))}
-    </div>
+    <>
+      <main className='max-w-6xl mx-auto px-4 my-4 min-h-[80vh]'>
+        <h1 className='my-8 text-3xl font-semibold text-gradient'>
+          Explore the spells
+        </h1>
+        <Pagination data={spells} itemsPerPage={10} />
+      </main>
+      <Footer />
+    </>
   );
 };
 
