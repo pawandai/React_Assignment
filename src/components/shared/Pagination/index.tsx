@@ -35,9 +35,9 @@ const Pagination = ({ data, itemsPerPage }: Props) => {
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
         {currentItems.map((spell) => (
           <Link to={`/spells/${spell.index}`} key={spell.url}>
-            <Card className='flex justify-between items-center'>
+            <Card>
               <CardHeader>
-                <h1 className='font-semibold text-lg'>{spell.name}</h1>
+                <h1 className='text-gradient'>{spell.name}</h1>
               </CardHeader>
             </Card>
           </Link>

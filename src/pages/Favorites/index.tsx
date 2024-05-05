@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { Trash } from 'lucide-react';
 import { spellType } from '../Spell';
 import { getFavorites, removeFromFavorites } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Card, CardHeader } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Footer from '@/components/shared/Footer';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState<spellType[]>([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const favorites = getFavorites();
@@ -22,21 +24,33 @@ const Favorites = () => {
 
   return (
     <>
-      <div className='mb-10'>Favorites</div>
-      <div>
-        {favorites.map((favorite) => (
-          <div key={favorite.index}>
-            <span
-              onClick={() => {
-                navigate(`/spells/${favorite.index}`);
-              }}
-            >
-              {favorite.name}
-            </span>{' '}
-            <Trash onClick={() => handleRemoveFromFavorites(favorite.index)} />
-          </div>
-        ))}
-      </div>
+      <main className='min-h-[75vh] my-5 p-5 max-w-6xl mx-auto'>
+        <div className='flex'>
+          <h1 className='mb-5 text-gradient text-4xl py-1'>My Favorites</h1>{' '}
+          <span />
+        </div>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 flex-wrap'>
+          {favorites.map((favorite) => (
+            <Card key={favorite.index}>
+              <CardHeader className='flex flex-row gap-5 items-center justify-between'>
+                <Link
+                  to={`/spells/${favorite.index}`}
+                  className='text-gradient'
+                >
+                  {favorite.name}
+                </Link>
+                <Button
+                  variant={'outline'}
+                  onClick={() => handleRemoveFromFavorites(favorite.index)}
+                >
+                  <Trash color='red' />
+                </Button>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+      </main>
+      <Footer />
     </>
   );
 };

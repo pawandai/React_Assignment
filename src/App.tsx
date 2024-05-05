@@ -9,7 +9,7 @@ import { Toaster } from 'sonner';
 function App() {
   return (
     <>
-      <Toaster richColors />
+      <Toaster richColors position='bottom-center' />
       <Routes>
         <Route path='/' Component={Navbar}>
           <Route path='/' Component={Home} />

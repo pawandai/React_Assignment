@@ -37,9 +37,10 @@ const Spells = () => {
   return (
     <>
       <main className='max-w-6xl mx-auto px-4 my-4 min-h-[80vh]'>
-        <h1 className='my-8 text-3xl font-semibold text-gradient'>
-          Explore the spells
-        </h1>
+        <div className='flex'>
+          <h1 className='my-8 text-4xl text-gradient'>Explore the spells</h1>
+          <span />
+        </div>
         <Pagination data={spells} itemsPerPage={10} />
       </main>
       <Footer />

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <>
-      <div className='max-w-5xl mx-auto flex flex-col items-center justify-center gap-10'>
+      <div className='max-w-5xl mx-auto flex flex-col items-center justify-center gap-5'>
         <img src='/dragon.png' className='' />
         <img src='/dnd_text.png' className='sm:-mt-20 -mt-10 sm:mr-20 w-40' />
         <p className='text-lg text-center'>
