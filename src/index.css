@@ -24,6 +24,17 @@ li {
   list-style-type: none;
 }
 
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(39, 26, 26, 1) 0%,
+    rgba(207, 27, 24, 1) 50%,
+    rgba(101, 23, 33, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
