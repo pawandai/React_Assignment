@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Thin scrollbar track */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Thin scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #facc15;
+  border-radius: 10px;
+  transition: all ease-in-out 0.2s;
+  position: absolute;
+}
+
+/* Thin scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e1b400;
+}
+
+li {
+  list-style-type: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
