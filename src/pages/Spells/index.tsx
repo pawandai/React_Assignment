@@ -4,13 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Footer from '@/components/shared/Footer';
 import Pagination from '@/components/shared/Pagination';
-
-export type spellsType = {
-  index: string;
-  level: number;
-  name: string;
-  url: string;
-};
+import type { spellsType } from '@/types';
 
 const Spells = () => {
   const dispatch = useDispatch();

@@ -1,28 +1,37 @@
-# Project Name
+# Dungeons & Dragons
 
-## Project Assignment Submission Description
+## Project Assignment Submission - Pawan Awasthi
 
-[Describe your project assignment here. Include details like the purpose of the project, objectives, requirements, and any other relevant information.]
+The goal is to showcase all the spells contained in Dungeons & Dragons 5th Edition API and details about the individual spells. It should allow us to add the spell to the list of favorites and show all the saved spells in the separate page.
+
+## Technologies used
+
+- React v18.2.0
+- TypeScript
+- Redux Toolkit
+- Tailwind CSS and Shadcn UI
+- Sonner (for Toast Messages)
 
 ## Running the Web Application
 
 ### Prerequisites
 
-- [List any prerequisites or dependencies needed to run the application]
+- Make sure that the PC is running the latest version of NodeJS
 
-### Installation
-
-[Provide instructions on how to install any dependencies or setup the environment needed to run the application]
-
-### Running the Application
+### Clone the git repository
 
 ```bash
-# Clone the repository
-git clone [repository_url]
+git clone https://github.com/pawandai/React_Assignment.git
+```
 
-# Navigate into the project directory
-cd [project_directory]
+### Install the required dependencies
 
-# Run the application
-[command_to_run_application]
+```bash
+npm install
+```
+
+### Run the application on your local machine
+
+```bash
+npm run dev
 ```

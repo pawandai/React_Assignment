@@ -18,7 +18,12 @@ const Home = () => {
           originally created and designed by Gary Gygax and Dave Arneson. The
           game was first published in 1974 by Tactical Studies Rules, Inc.
         </p>
-        <Link to={'/spells'} className={buttonVariants({ variant: 'default' })}>
+        <Link
+          to={'/spells'}
+          className={`${buttonVariants({
+            variant: 'default',
+          })} gradient-background text-white`}
+        >
           Explore Spells <ArrowRight />
         </Link>
       </div>

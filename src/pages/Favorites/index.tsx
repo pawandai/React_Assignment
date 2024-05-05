@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Trash } from 'lucide-react';
-import { spellType } from '../Spell';
 import { getFavorites, removeFromFavorites } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/shared/Footer';
+import type { spellType } from '@/types';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState<spellType[]>([]);

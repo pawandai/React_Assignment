@@ -2,21 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import { ClerkProvider } from '@clerk/clerk-react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.ts';
-
-const CLERK_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+import ErrorBoundaryHandler from './components/ErrorBoundaryHandler/index.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <ClerkProvider publishableKey={CLERK_KEY}>
+    <ErrorBoundary fallback={<ErrorBoundaryHandler />}>
+      <Provider store={store}>
+        <BrowserRouter>
           <App />
-        </ClerkProvider>
-      </BrowserRouter>
-    </Provider>
+        </BrowserRouter>
+      </Provider>
+    </ErrorBoundary>
   </React.StrictMode>
 );

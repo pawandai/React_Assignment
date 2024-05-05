@@ -1,6 +1,6 @@
 import { navLinks } from '@/constants';
 import { cn } from '@/lib/utils';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 
 import {
   Sheet,
@@ -17,13 +17,13 @@ const MobileNavigation = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu />
+        <Menu color='white' />
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className='rounded-tl-[20px] rounded-bl-[20px]'>
         <SheetHeader className='mt-5'>
-          <SheetTitle className='flex flex-col items-center mb-10'>
+          <SheetTitle className='flex flex-col items-center mb-10 text-gradient'>
             <img src='/logo.png' className='w-20' />
-            CodeDuo
+            <h1 className='text-xl'>CodeDuo</h1>
           </SheetTitle>
           <SheetDescription className='flex flex-col items-center gap-5'>
             {navLinks.map((navLink) => (
@@ -52,9 +52,11 @@ const Navbar = () => {
 
   return (
     <>
-      <header className='w-full h-fit px-4 bg-primary'>
+      <header className='w-full h-fit px-4 gradient-background'>
         <nav className='max-w-6xl mx-auto flex justify-between'>
-          <img src='/logo.png' className='rounded-full w-14' />
+          <Link to={'/'}>
+            <img src='/logo.png' className='rounded-full w-14' />
+          </Link>
 
           <div className='flex items-center justify-end gap-40 flex-1 md:hidden'>
             <MobileNavigation />
@@ -64,10 +66,12 @@ const Navbar = () => {
             {navLinks.map((navLink) => (
               <li
                 key={navLink.id}
-                className={cn('p-5 text-lg border-b-4 border-b-primary', {
-                  'text-red-600 outline-border border-b-red-600':
-                    pathname === navLink.href,
-                })}
+                className={cn(
+                  'p-5 text-lg text-gray-400 border-b-4 border-b-transparent',
+                  {
+                    'border-b-orange-50 text-white': pathname === navLink.href,
+                  }
+                )}
               >
                 <NavLink to={navLink.href}>{navLink.title}</NavLink>
               </li>

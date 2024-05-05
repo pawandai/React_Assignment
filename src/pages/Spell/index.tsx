@@ -4,28 +4,11 @@ import { Card } from '@/components/ui/card';
 import { addToFavorites, getFavorites, removeFromFavorites } from '@/lib/utils';
 import { addFavorite } from '@/redux/slice/favoriteSlice';
 import { addSpell } from '@/redux/slice/spellSlice';
+import type { spellType } from '@/types';
 import { Bookmark } from 'lucide-react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
-export type spellType = {
-  index: string;
-  name: string;
-  desc: [];
-  higher_level: [];
-  range: number;
-  components: [];
-  material: string;
-  ritual: boolean;
-  duration: string;
-  concentration: boolean;
-  casting_time: string;
-  level: number;
-  attack_type: string;
-  classes: [];
-  subclasses: [];
-};
 
 const Spell = () => {
   const spell = useSelector(
@@ -64,7 +47,7 @@ const Spell = () => {
 
   return (
     <>
-      <main className='max-w-3xl mx-auto mb-5 min-h-[75vh]'>
+      <main className='max-w-3xl mx-auto mb-5 min-h-[75vh] px-3'>
         <div className='flex items-center justify-between my-5'>
           <h1 className='text-3xl text-gradient font-semibold flex'>
             {spell.name}

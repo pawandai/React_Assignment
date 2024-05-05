@@ -1,4 +1,4 @@
-import type { spellType } from '@/pages/Spell';
+import type { spellType } from '@/types';
 import { type ClassValue, clsx } from 'clsx';
 import { toast } from 'sonner';
 import { twMerge } from 'tailwind-merge';

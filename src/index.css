@@ -9,7 +9,7 @@
 
 /* Thin scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background: #facc15;
+  background: rgba(101, 23, 33, 1);
   border-radius: 10px;
   transition: all ease-in-out 0.2s;
   position: absolute;
@@ -17,7 +17,7 @@
 
 /* Thin scrollbar thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #e1b400;
+  background: rgba(39, 26, 26, 1);
 }
 
 li {
@@ -33,6 +33,15 @@ li {
   );
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+}
+
+.gradient-background {
+  background: linear-gradient(
+    90deg,
+    rgba(207, 27, 24, 1) 0%,
+    rgba(101, 23, 33, 1) 50%,
+    rgba(39, 26, 26, 1) 100%
+  );
 }
 
 @layer base {
