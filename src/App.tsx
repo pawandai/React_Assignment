@@ -4,17 +4,21 @@ import Spells from './pages/Spells';
 import Favorites from './pages/Favorites';
 import Navbar from './components/shared/Navbar';
 import Spell from './pages/Spell';
+import { Toaster } from 'sonner';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' Component={Navbar}>
-        <Route path='/' Component={Home} />
-        <Route path='/spells' Component={Spells} />
-        <Route path='/spells/:index' Component={Spell} />
-        <Route path='/favorites' Component={Favorites} />
-      </Route>
-    </Routes>
+    <>
+      <Toaster richColors />
+      <Routes>
+        <Route path='/' Component={Navbar}>
+          <Route path='/' Component={Home} />
+          <Route path='/spells' Component={Spells} />
+          <Route path='/spells/:index' Component={Spell} />
+          <Route path='/favorites' Component={Favorites} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

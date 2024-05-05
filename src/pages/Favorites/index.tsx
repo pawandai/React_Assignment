@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Trash } from 'lucide-react';
 import { spellType } from '../Spell';
-import { removeFromFavorites } from '@/lib/utils';
+import { getFavorites, removeFromFavorites } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
 
 const Favorites = () => {
@@ -9,20 +9,14 @@ const Favorites = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storateSpells = localStorage.getItem('spells');
-    if (storateSpells) {
-      const storage: string[] = JSON.parse(storateSpells);
-      const parsedFavorites: spellType[] = storage.map((spell) =>
-        JSON.parse(spell)
-      );
-      setFavorites(parsedFavorites);
-    }
+    const favorites = getFavorites();
+    if (favorites) setFavorites(favorites);
   }, []);
 
-  const handleRemoveFromFavorites = (index: number) => {
+  const handleRemoveFromFavorites = (index: string) => {
     removeFromFavorites(index);
     setFavorites((prevFavorites) =>
-      prevFavorites.filter((_, i) => i !== index)
+      prevFavorites.filter((prevFav) => prevFav.index !== index)
     );
   };
 
@@ -30,8 +24,8 @@ const Favorites = () => {
     <>
       <div className='mb-10'>Favorites</div>
       <div>
-        {favorites.map((favorite, index) => (
-          <div key={index}>
+        {favorites.map((favorite) => (
+          <div key={favorite.index}>
             <span
               onClick={() => {
                 navigate(`/spells/${favorite.index}`);
@@ -39,7 +33,7 @@ const Favorites = () => {
             >
               {favorite.name}
             </span>{' '}
-            <Trash onClick={() => handleRemoveFromFavorites(index)} />
+            <Trash onClick={() => handleRemoveFromFavorites(favorite.index)} />
           </div>
         ))}
       </div>

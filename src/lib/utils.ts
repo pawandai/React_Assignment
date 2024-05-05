@@ -1,5 +1,6 @@
 import type { spellType } from '@/pages/Spell';
 import { type ClassValue, clsx } from 'clsx';
+import { toast } from 'sonner';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -7,33 +8,37 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const addToFavorites = (data: spellType) => {
-  let spells: string[] | null = localStorage.getItem('spells') as
-    | string[]
-    | null;
+  try {
+    const favorites = getFavorites() || [];
 
-  if (spells) {
-    spells = JSON.parse(spells.toString());
-  } else {
-    spells = [];
+    favorites?.push(data);
+
+    localStorage.setItem('spells', JSON.stringify(favorites));
+
+    toast.success('Added to favorites');
+  } catch (error) {
+    toast.error('Sorry, something went wrong');
   }
-
-  spells?.push(JSON.stringify(data));
-
-  localStorage.setItem('spells', JSON.stringify(spells));
 };
 
-export const removeFromFavorites = (index: number) => {
-  let spells: string[] | null = localStorage.getItem('spells') as
-    | string[]
-    | null;
-
-  if (spells) {
-    spells = JSON.parse(spells.toString());
-  } else {
-    spells = [];
+export const getFavorites = () => {
+  const storageSpells = localStorage.getItem('spells');
+  if (storageSpells) {
+    return JSON.parse(storageSpells);
   }
+  return [];
+};
 
-  spells?.splice(index, 1);
+export const removeFromFavorites = (index: string) => {
+  try {
+    const newSpells = getFavorites()?.filter(
+      (favorite: spellType) => favorite.index !== index
+    );
 
-  localStorage.setItem('spells', JSON.stringify(spells));
+    localStorage.setItem('spells', JSON.stringify(newSpells));
+
+    toast.success('Removed from favorites');
+  } catch (error) {
+    toast.error('Sorry, something went wrong');
+  }
 };

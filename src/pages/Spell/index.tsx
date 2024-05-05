@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { addToFavorites } from '@/lib/utils';
+import { addToFavorites, getFavorites, removeFromFavorites } from '@/lib/utils';
+import { addFavorite } from '@/redux/slice/favoriteSlice';
 import { addSpell } from '@/redux/slice/spellSlice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,9 +28,19 @@ const Spell = () => {
   const spell = useSelector(
     (state: { spell: { data: spellType } }) => state.spell.data
   );
+  const favorites = useSelector(
+    (state: { favorites: { data: spellType[] } }) => state.favorites.data
+  );
   const dispatch = useDispatch();
   console.log(spell);
   const pathname = useParams();
+
+  const isFavorite = (spell: spellType) => {
+    for (const favorite of favorites) {
+      if (favorite.index === spell.index) return true;
+    }
+    return false;
+  };
 
   useEffect(() => {
     const getSpell = async (index: string) => {
@@ -53,10 +64,14 @@ const Spell = () => {
       {pathname.index} {spell.desc}
       <Button
         onClick={() => {
-          addToFavorites(spell);
+          isFavorite(spell)
+            ? removeFromFavorites(spell.index)
+            : addToFavorites(spell);
+          const favorites = getFavorites();
+          dispatch(addFavorite(favorites));
         }}
       >
-        Add to Favorite
+        {!isFavorite(spell) ? 'Add to Favorites' : 'Remove from Favorites'}
       </Button>
     </div>
   );
