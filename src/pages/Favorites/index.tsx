@@ -30,24 +30,26 @@ const Favorites = () => {
           <span />
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 flex-wrap'>
-          {favorites.map((favorite) => (
-            <Card key={favorite.index}>
-              <CardHeader className='flex flex-row gap-5 items-center justify-between'>
-                <Link
-                  to={`/spells/${favorite.index}`}
-                  className='text-gradient'
-                >
-                  {favorite.name}
-                </Link>
-                <Button
-                  variant={'outline'}
-                  onClick={() => handleRemoveFromFavorites(favorite.index)}
-                >
-                  <Trash color='red' />
-                </Button>
-              </CardHeader>
-            </Card>
-          ))}
+          {favorites.length > 0
+            ? favorites.map((favorite) => (
+                <Card key={favorite.index}>
+                  <CardHeader className='flex flex-row gap-5 items-center justify-between'>
+                    <Link
+                      to={`/spells/${favorite.index}`}
+                      className='text-gradient'
+                    >
+                      {favorite.name}
+                    </Link>
+                    <Button
+                      variant={'outline'}
+                      onClick={() => handleRemoveFromFavorites(favorite.index)}
+                    >
+                      <Trash color='red' />
+                    </Button>
+                  </CardHeader>
+                </Card>
+              ))
+            : 'Nothing to show in the favorites'}
         </div>
       </main>
       <Footer />
