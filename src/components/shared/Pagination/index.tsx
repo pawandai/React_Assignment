@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
-import { spellsType } from '@/pages/Spells';
+import { spellsType } from '@/types';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
